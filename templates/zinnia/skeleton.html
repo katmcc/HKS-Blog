@@ -9,12 +9,14 @@
     <meta name="description" content="{% block meta-description %}Demonstration of the Zinnia Blog application.{% endblock %}" />
     <meta name="keywords" content="{% block meta-keywords %}django, blog, zinnia, {{ entry_tags|join:", "}}{% endblock %}" />
     <meta name="author" content="Fantomas42" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     {% block meta %}{% endblock %}
     <link rel="pingback" href="/xmlrpc/" />
     <link rel="shortcut icon" href="{{ STATIC_URL }}zinnia/img/favicon.ico" />
     <link rel="home" href="{% url zinnia_entry_archive_index %}" />
     <link rel="stylesheet" type="text/css" media="screen, projection" href="{{ STATIC_URL }}zinnia/css/screen.css" />
     <link rel="stylesheet" type="text/css" media="print" href="{{ STATIC_URL }}zinnia/css/print.css" />
+    <link  rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/bootstrap.min.css"/>
     <!--[if lt IE 8]>
         <link rel="stylesheet" type="text/css" media="screen, projection" href="{{ STATIC_URL }}zinnia/css/ie.css" />
     <![endif]-->
@@ -40,11 +42,11 @@
         </nav>
         <h1>
           <a href="{% url zinnia_entry_archive_index %}" title="Zinnia's Blog" rel="home">
-            Zinnia's Blog
+            Hook Knit and Spinner
           </a>
         </h1>
         <blockquote>
-          <p>Just another Zinnia weblog.</p>
+          <p>Owls and Woolies</p>
         </blockquote>
         {% block breadcrumbs %}{% endblock %}
       </header>
