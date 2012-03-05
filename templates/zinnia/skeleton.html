@@ -50,18 +50,20 @@
         </blockquote>
         {% block breadcrumbs %}{% endblock %}
       </header>
-      <div id="content" class="hfeed" role="main">
-        {% block content %}
-        <h3>The content block need to be overrided!</h3>
-        {% endblock %}
-      </div>
-      <div id="sidebar" role="complementary">
-        <aside class="welcome">
-          <h3>Welcome!</h3>
-        </aside>
-        {% block sidebar %}
-        {% endblock %}
-      </div>
+      <div class="row">
+        <div id="content" class="hfeed span8" role="main">
+          {% block content %}
+          <h3>The content block need to be overrided!</h3>
+          {% endblock %}
+        </div>
+        <div id="sidebar" role="complementary" class="span4">
+          <aside class="welcome">
+            <h3>Welcome!</h3>
+          </aside>
+          {% block sidebar %}
+          {% endblock %}
+        </div>
+    </div>
       <footer id="footer" role="contentinfo">
         <p>Powered by <a href="http://www.djangoproject.com">Django</a> and <a href="http://github.com/Fantomas42/django-blog-zinnia">Zinnia {{ ZINNIA_VERSION }}</a>.</p>
       </footer>

@@ -40,29 +40,9 @@
   <h3>{% trans "Authors" %}</h3>
   {% get_authors %}
 </aside>
-<aside id="widget-calendar" class="widget">
-  <h3>{% trans "Calendar" %}</h3>
-  {% get_calendar_entries %}
-</aside>
-<aside id="widget-tags" class="widget">
-  <h3>{% trans "Tags" %}</h3>
-  {% get_tag_cloud %}
-</aside>
 <aside id="widget-recents" class="widget">
   <h3>{% trans "Recent entries" %}</h3>
   {% get_recent_entries 5 %}
-</aside>
-<aside id="widget-comments" class="widget">
-  <h3>{% trans "Recent comments" %}</h3>
-  {% get_recent_comments 5 %}
-</aside>
-<aside id="widget-linkbacks" class="widget">
-  <h3>{% trans "Recent linkbacks" %}</h3>
-  {% get_recent_linkbacks 5 %}
-</aside>
-<aside id="widget-randoms" class="widget">
-  <h3>{% trans "Random entries" %}</h3>
-  {% get_random_entries 5 %}
 </aside>
 <aside id="widget-populars" class="widget">
   <h3>{% trans "Popular entries" %}</h3>
