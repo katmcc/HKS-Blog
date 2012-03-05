@@ -17,6 +17,7 @@
     <link rel="stylesheet" type="text/css" media="screen, projection" href="{{ STATIC_URL }}zinnia/css/screen.css" />
     <link rel="stylesheet" type="text/css" media="print" href="{{ STATIC_URL }}zinnia/css/print.css" />
     <link  rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/bootstrap.min.css"/>
+    <link  rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/styles.css"/>
     <!--[if lt IE 8]>
         <link rel="stylesheet" type="text/css" media="screen, projection" href="{{ STATIC_URL }}zinnia/css/ie.css" />
     <![endif]-->
@@ -64,7 +65,7 @@
           {% endblock %}
         </div>
       </div>
-      <footer id="footer" role="contentinfo">
+      <footer id="footer" role="contentinfo" style="border-top: 1px solid #eee;padding-top:10px;">
         <div class="row">
           {% block footer %}
           {% endblock %}

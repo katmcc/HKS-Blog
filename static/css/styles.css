@@ -1,0 +1,7 @@
+.list-with-icons{ 
+	margin-left: 0;
+}
+
+.list-with-icons li{
+	list-style-type: none;
+}

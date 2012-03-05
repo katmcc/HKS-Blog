@@ -32,18 +32,6 @@
     </p>
   </form>
 </aside>
-<aside id="widget-categories" class="widget">
-  <h3>{% trans "Categories" %}</h3>
-  {% get_categories %}
-</aside>
-<aside id="widget-authors" class="widget">
-  <h3>{% trans "Authors" %}</h3>
-  {% get_authors %}
-</aside>
-<aside id="widget-recents" class="widget">
-  <h3>{% trans "Recent entries" %}</h3>
-  {% get_recent_entries 5 %}
-</aside>
 <aside id="widget-populars" class="widget">
   <h3>{% trans "Popular entries" %}</h3>
   {% get_popular_entries 5 %}
@@ -80,4 +68,20 @@
   </ul>
 </aside>
 {% endif %}
+{% endblock %}
+
+{% block footer %}
+<div class="span8">
+  <aside id="widget-categories" class="widget" style="float:left;width:75%">
+    <h3>{% trans "Categories" %}</h3>
+    {% get_categories %}
+  </aside>
+  <aside id="widget-authors" class="widget" style="float:left;width:25%">
+    <h3>{% trans "Authors" %}</h3>
+    {% get_authors %}
+  </aside>
+</div>
+<div class="span4">
+    not sure what goes here
+</div>
 {% endblock %}

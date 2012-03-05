@@ -50,23 +50,6 @@
   </div>
 
   <footer class="entry-footer">
-    <p class="entry-tags">
-      <strong>{% trans "Tags" %}</strong> :
-      {% tags_for_object object as tag_list %}
-      {% for tag in tag_list %}
-      <a href="{% url zinnia_tag_detail tag %}"
-         title="Tag {{ tag }}" rel="tag">{{ tag }}</a>
-      {% empty %}
-      <span>{% trans "No tags" %}</span>
-      {% endfor %}
-    </p>
-
-    <p class="entry-shorturl">
-      <strong>{% trans "Short url" %}</strong> :
-      <a href="{{ object.short_url }}" title="{{ object.title }}" rel="shortlink">
-        {{ object.short_url }}
-      </a>
-    </p>
 
     <p class="entry-comments">
       <strong>{% trans "Discussions" %}</strong> :
