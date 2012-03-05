@@ -1,0 +1,90 @@
+{% extends "zinnia/base.html" %}
+{% load i18n zinnia_tags %}
+
+{% block meta-description %}{% trans "Latest posts for" %} {% trans "the author" %} {{ author }}{% if page_obj %}{% ifnotequal page_obj.number 1 %} {% trans "page" %} {{ page_obj.number }}{% endifnotequal %}{% endif %}{% endblock %}
+
+{% block link %}
+  {{ block.super }}
+  {% if category %}
+    <link rel="alternate" type="application/rss+xml" title="{% trans "RSS Feed" %} {{ category.title }}" href="{% url zinnia_category_feed category.tree_path %}" />
+  {% endif %}
+  {% if tag %}
+    <link rel="alternate" type="application/rss+xml" title="{% trans "RSS Feed" %} {{ tag.name }}" href="{% url zinnia_tag_feed tag.name %}" />
+  {% endif %}
+  {% if author %}
+    <link rel="alternate" type="application/rss+xml" title="{% trans "RSS Feed" %} {{ author.username }}" href="{% url zinnia_author_feed author.username %}" />
+  {% endif %}
+{% endblock %}
+
+{% block title %}{% trans "Latest entries" %}| {% trans "Author" %} {{ author }}{% if page_obj %}{% ifnotequal page_obj.number 1 %} | {% trans "Page" %} {{ page_obj.number }}{% endifnotequal %}{% endif %}{% endblock %}
+
+{% block content %}
+<div>
+  <img src="{{ author.get_profile.avatar.url }}" />
+  <p>{{ author.get_profile.description }}</p>
+  {% if author.get_profile.site %}
+    <a target="_blank" href="{{ author.get_profile.site }}">Go to {{ author.username}}'s site</a>
+  {% endif %}
+  
+  <h6>Social links:</h6>
+  <ul>
+  {% if author.get_profile.facebook %}
+    <li><a target="_blank" href="http://www.facebook.com/{{ author.get_profile.facebook }}">Facebook</a></li>
+  {% endif %}
+  {% if author.get_profile.googleplus %}
+    <li><a target="_blank" href="https://plus.google.com/u/0/{{ author.get_profile.googleplus }}/posts">google +</a></li>
+  {% endif %}
+  {% if author.get_profile.twitter %}
+    <li><a target="_blank" href="http://twitter.com/#!/{{ author.get_profile.twitter }}">twitter</a></li>
+  {% endif %}
+  {% if author.get_profile.tumblr %}
+    <li><a target="_blank" href="{{ author.get_profile.tumblr }}">tumblr</a></li>
+  {% endif %}
+  {% if author.get_profile.pinterest %}
+    <li><a target="_blank" href="http://pinterest.com/{{ author.get_profile.pinterest }}">pinterest</a></li>
+  {% endif %}
+  <ul>
+  
+</div>
+
+<h1>Posts by {{ author.username }}</h1>
+
+{% for object in object_list %}
+<div id="entry-{{ object.pk }}" class="hentry{% if object.featured %} featured{% endif %} span-16 last">
+  {% with object.html_content|truncatewords_html:100|safe as object_content %}
+  {% include "zinnia/_entry_detail.html" %}
+  {% endwith %}
+</div>
+<hr />
+{% empty %}
+  {% trans "No entries yet." %}
+{% endfor %}
+
+{% if is_paginated %}
+  {% zinnia_pagination page_obj %}
+{% endif %}
+{% endblock %}
+
+{% block admin_tools %}
+  {% if category and perms.zinnia.change_category %}
+  <li>
+    <a href="{% url admin:zinnia_category_change category.pk %}" title="{% trans "Edit the category" %}">
+      {% trans "Edit the category" %}
+    </a>
+  </li>
+  {% endif %}
+  {% if tag and perms.tagging.change_tag %}
+  <li>
+    <a href="{% url admin:tagging_tag_change tag.pk %}" title="{% trans "Edit the tag" %}">
+      {% trans "Edit the tag" %}
+    </a>
+  </li>
+  {% endif %}
+  {% if author and perms.auth.change_user %}
+  <li>
+    <a href="{% url admin:auth_user_change author.pk %}" title="{% trans "Edit the author" %}">
+      {% trans "Edit the author" %}
+    </a>
+  </li>
+  {% endif %}
+{% endblock %}
