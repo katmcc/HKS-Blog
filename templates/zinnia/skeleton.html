@@ -30,13 +30,18 @@
         <nav>
           <ul class="top-navigation">
             <li>
-              <a href="{% url zinnia_sitemap %}" title="{% trans "Sitemap" %}" class="sitemap">
-                {% trans "Sitemap" %}
+              <a href="/about" title="{% trans "About" %}" class="about">
+                {% trans "About" %}
               </a>
             </li>
             <li>
-              <a href="{% url zinnia_entry_latest_feed %}" title="{% trans "RSS Feed of latest entries" %}" class="feeds">
-                {% trans "RSS Feed" %}
+              <a href="/weblog/authors/" title="{% trans "Authors" %}" class="authors">
+                {% trans "Authors" %}
+              </a>
+            </li>
+            <li>
+              <a href="/weblog/categories/" title="{% trans "Categories" %}" class="categories">
+                {% trans "Categories" %}
               </a>
             </li>
           </ul>
